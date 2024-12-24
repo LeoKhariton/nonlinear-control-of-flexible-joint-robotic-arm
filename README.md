@@ -1,1 +1,9 @@
-# nonlinear-control-of-flexible-joint-robotic-arm
+# Нелинейное управление однозвенным гибким манипулятором с шарниром
+
+В данной работе представлен вариант решения задачи, предложенной в статье.
+
+1. Поиск линеаризующего управления в `Mathematica`:
+
+Согласно алгоритму, описанному в книге, найдено линеаризующее управление:
+
+$u=\dfrac{\left(g h J_h m R_m \left(\sin (x_1+x_2) \left(-g h m \cos (x_1+x_2)+J_l (x_3+x_4)^2+K_s\right)+K_s x_2 \cos (x_1+x_2)\right)+K_s \left(J_l K_g^2 K_m^2 x_3-K_s R_m x_2 (J_h+J_l)\right)\right)-J_h J_l R_m \left(k_3 (g h m (x_3+x_4) \cos (x_1+x_2)-K_s x_4)+k_2 (g h m \sin (x_1+x_2)-K_s x_2)+y J_l k_0+J_l k_1 (x_3+x_4)\right)}{J_l K_g K_m K_s}$
