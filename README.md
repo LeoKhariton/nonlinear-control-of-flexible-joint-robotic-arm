@@ -15,12 +15,10 @@ $\begin{cases}
 
 где
 
-$
-\theta=x_1\\
+$\theta=x_1\\
 \alpha=x_2\\
 \dot\theta=x_3\\
-\dot\alpha=x_4
-$
+\dot\alpha=x_4$
 
 Параметры системы:
 
