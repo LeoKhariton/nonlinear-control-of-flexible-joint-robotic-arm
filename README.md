@@ -49,7 +49,7 @@ $y=h(x)$
 $\begin{cases}a \\\\ b \end{cases}$
 
 ```math
-begin{bmatrix}X\\Y\end{bmatrix}
+\begin{bmatrix}X\\Y\end{bmatrix}
 ```
 
 $\dot{x} = 
