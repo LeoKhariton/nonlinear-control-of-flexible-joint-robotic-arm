@@ -16,7 +16,7 @@ $\begin{cases}
 где
 
 $\theta=x_1\\
-\alpha=x_2\\
+\alpha=x_2\newline
 \dot\theta=x_3\\
 \dot\alpha=x_4$
 
