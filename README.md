@@ -48,6 +48,10 @@ $y=h(x)$
 
 $\begin{cases}a \\\\ b \end{cases}$
 
+```math
+begin{bmatrix}X\\Y\end{bmatrix}
+```
+
 $\dot{x} = 
 \begin{pmatrix}
 x_3 \\
