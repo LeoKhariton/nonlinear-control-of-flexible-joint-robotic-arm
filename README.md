@@ -6,23 +6,25 @@
 
 ![alt text](image.png)
 
-$\dot{x_1} = x_3$
-
-$\dot{x_2} = x_4$
-
-$\dot{x_3} = \dfrac{K_s}{J_h} x_2 - \dfrac{K_m^2 K_g^2}{R_m J_h} x_3 + \dfrac{K_m K_g}{R_m J_h} v$
-
-$\dot{x_4} = -\dfrac{K_s}{J_h} x_2 + \dfrac{K_m^2 K_g^2}{R_m J_h} x_3 - \dfrac{K_m K_g}{R_m J_h} v - \dfrac{K_s}{J_l} x_2 + \dfrac{mgh}{J_l} \sin(x_1 + x_2)$
+```math
+\begin{cases}
+\dot x_1 = x_3 \\
+\dot x_2 = x_4 \\
+\dot x_3 = \dfrac{K_s}{J_h} x_2 - \dfrac{K_m^2 K_g^2}{R_m J_h} x_3 + \dfrac{K_m K_g}{R_m J_h} v \\
+\dot x_4 = -\dfrac{K_s}{J_h} x_2 + \dfrac{K_m^2 K_g^2}{R_m J_h} x_3 - \dfrac{K_m K_g}{R_m J_h} v - \dfrac{K_s}{J_l} x_2 + \dfrac{mgh}{J_l} \sin(x_1 + x_2)
+\end{cases}
+```
 
 где
 
-$\theta=x_1$
-
-$\alpha=x_2$
-
-$\dot\theta=x_3$
-
-$\dot\alpha=x_4$
+```math
+\begin{cases}
+\theta=x_1 \\
+\alpha=x_2 \\
+\dot\theta=x_3 \\
+\dot\alpha=x_4
+\end{cases}
+```
 
 Параметры системы:
 
@@ -40,35 +42,53 @@ $\dot\alpha=x_4$
 
 1. В аффинной форме
 
-$\dot x=f(x)+g(x)u$
-
-$y=h(x)$
+```math
+\begin{cases}
+\dot x=f(x)+g(x)u \\
+y=h(x)
+\end{cases}
+```
 
 динамика объекта управления может быть представлена в виде:
 
-$\begin{cases}a \\\\ b \end{cases}$
-
 ```math
-\begin{bmatrix}X\\Y\end{bmatrix}
-```
-
-$\dot{x} = 
-\begin{pmatrix}
+\begin{cases}
+\dot{x} = 
+\begin{bmatrix}
 x_3 \\
 x_4 \\
-\frac{K_s}{J_h} x_2 - \frac{K_m^2 K_g^2}{R_m J_h} x_3 + \frac{K_m K_g}{R_m J_h} u \\
--\left( \frac{K_s}{J_h} + \frac{K_s}{J_l} \right) x_2 + \frac{mgh}{J_l} \sin(x_1 + x_2) + \frac{K_m^2 K_g^2}{R_m J_h} x_3
-\end{pmatrix}
+\dfrac{K_s}{J_h} x_2 - \dfrac{K_m^2 K_g^2}{R_m J_h} x_3 \\
+-\left( \dfrac{K_s}{J_h} + \dfrac{K_s}{J_l} \right) x_2 + \dfrac{mgh}{J_l} \sin(x_1 + x_2) + \dfrac{K_m^2 K_g^2}{R_m J_h} x_3
+\end{bmatrix}
 + 
-\begin{pmatrix}
+\begin{bmatrix}
 0 \\
 0 \\
-\frac{K_m K_g}{R_m J_h} \\
-- \frac{K_m K_g}{R_m J_h}
-\end{pmatrix}
-u$
+\dfrac{K_m K_g}{R_m J_h} \\
+- \dfrac{K_m K_g}{R_m J_h}
+\end{bmatrix}
+u \\
+y = x_1+x_2
+\end{cases}
+```
 
-1. Поиск линеаризующего управления в `Mathematica`:
+где
+
+```math
+x = 
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3 \\ x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+\theta \\
+\alpha \\
+\dot \theta \\
+\dot \alpha
+\end{bmatrix}
+```
+
+2. Поиск линеаризующего управления проведем в системе символьных вычислений `Mathematica`.
 
 Согласно алгоритму, описанному в [книге](https://github.com/LeoKhariton/nonlinear-control-of-flexible-joint-robotic-arm/blob/main/Б.Т.%20Поляк%20М.В.%20Хлебников%20Л.Б.%20Рапопорт.%20Математическая%20теория%20автоматического%20управления.pdf) (стр. 359-361), найдено линеаризующее управление:
 
