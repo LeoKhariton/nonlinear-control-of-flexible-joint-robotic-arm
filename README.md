@@ -46,7 +46,7 @@ $y=h(x)$
 
 динамика объекта управления может быть представлена в виде:
 
-$\begin{cases}a\\ b \end{cases}$
+$\begin{cases}a \\\\ b \end{cases}$
 
 $\dot{x} = 
 \begin{pmatrix}
