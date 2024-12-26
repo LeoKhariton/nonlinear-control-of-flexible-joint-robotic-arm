@@ -6,25 +6,21 @@
 
 ![alt text](image.png)
 
-$
-\begin{cases}
+$\begin{cases}
 \dot{x_1} = x_3 \\
 \dot{x_2} = x_4 \\
 \dot{x_3} = \dfrac{K_s}{J_h} x_2 - \dfrac{K_m^2 K_g^2}{R_m J_h} x_3 + \dfrac{K_m K_g}{R_m J_h} v \\
 \dot{x_4} = -\dfrac{K_s}{J_h} x_2 + \dfrac{K_m^2 K_g^2}{R_m J_h} x_3 - \dfrac{K_m K_g}{R_m J_h} v - \dfrac{K_s}{J_l} x_2 + \dfrac{mgh}{J_l} \sin(x_1 + x_2)
-\end{cases}
-$
+\end{cases}$
 
 где
 
-$
-\begin{cases}
+$\begin{cases}
 \theta=x_1\\
 \alpha=x_2\\
 \dot\theta=x_3\\
 \dot\alpha=x_4
-\end{cases}
-$
+\end{cases}$
 
 Параметры системы:
 
@@ -39,6 +35,9 @@ $
 | Передаточное число | $K_g$ | 70 |
 | Инерция нагрузки | $J_l$ | 0.0059 [Кг·м²] |
 | Сопротивление двиг. | $R_m$ | 2.6 [Ом] |
+
+1. В аффинной форме
+
 
 
 1. Поиск линеаризующего управления в `Mathematica`:
