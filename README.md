@@ -4,27 +4,27 @@
 
 Математическая модель однозвенного гибкого манипулятора с шарниром в вертикальной плоскости, взятая из [статьи](https://github.com/LeoKhariton/nonlinear-control-of-flexible-joint-robotic-arm/blob/main/Modeling%20and%20Nonlinear%20Control%20of%20a%20Single-link%20Flexible%20Joint.pdf), имеет вид:
 
-![alt text](image.png)
-
 ```math
 \begin{cases} 
 \dot x_1 = x_3 \\ 
 \dot x_2 = x_4 \\ 
 \dot x_3 = \dfrac{K_s}{J_h} x_2 - \dfrac{K_m^2 K_g^2}{R_m J_h} x_3 + \dfrac{K_m K_g}{R_m J_h} v \\ 
-\dot x_4 = -\dfrac{K_s}{J_h} x_2 + \dfrac{K_m^2 K_g^2}{R_m J_h} x_3 - \dfrac{K_m K_g}{R_m J_h} v - \dfrac{K_s}{J_l} x_2 + \dfrac{mgh}{J_l} \sin(x_1 + x_2)
+\dot x_4 = -\dfrac{K_s}{J_h} x_2 + \dfrac{K_m^2 K_g^2}{R_m J_h} x_3 - \dfrac{K_m K_g}{R_m J_h} v - \dfrac{K_s}{J_l} x_2 + \dfrac{mgh}{J_l} \sin(x_1 + x_2) 
 \end{cases}
 ```
 
 где
 
 ```math
-\begin{cases}
-\theta=x_1 \\
-\alpha=x_2 \\
-\dot\theta=x_3 \\
-\dot\alpha=x_4
+\begin{cases} 
+\theta=x_1 \\ 
+\alpha=x_2 \\ 
+\dot\theta=x_3 \\ 
+\dot\alpha=x_4 
 \end{cases}
 ```
+
+![alt text](image.png)
 
 Параметры системы:
 
@@ -40,19 +40,19 @@
 | Инерция нагрузки | $J_l$ | 0,0059 [Кг·м²] |
 | Сопротивление двиг. | $R_m$ | 2,6 [Ом] |
 
-1. В аффинной форме
+В аффинной форме
 
 ```math
-\begin{cases}
-\dot x=f(x)+g(x)u \\
-y=h(x)
+\begin{cases} 
+\dot x=f(x)+g(x)u \\ 
+y=h(x) 
 \end{cases}
 ```
 
 динамика объекта управления может быть представлена в виде:
 
 ```math
-\begin{cases}
+\begin{cases} 
 \dot{x} = 
 \begin{bmatrix}
 x_3 \\
@@ -88,7 +88,9 @@ x_1 \\ x_2 \\ x_3 \\ x_4
 \end{bmatrix}
 ```
 
-2. Поиск линеаризующего управления проведем в системе символьных вычислений `Mathematica`.
+### Поиск линеаризующего управления
+
+проведем в системе символьных вычислений `Mathematica`
 
 Согласно алгоритму, описанному в [книге](https://github.com/LeoKhariton/nonlinear-control-of-flexible-joint-robotic-arm/blob/main/Б.Т.%20Поляк%20М.В.%20Хлебников%20Л.Б.%20Рапопорт.%20Математическая%20теория%20автоматического%20управления.pdf) (стр. 359-361), найдено линеаризующее управление:
 
