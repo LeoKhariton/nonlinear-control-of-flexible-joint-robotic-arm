@@ -1,8 +1,8 @@
 # Нелинейное управление однозвенным гибким манипулятором с шарниром
 
-В данной работе представлен вариант решения задачи, предложенной в [статье](https://github.com/LeoKhariton/nonlinear-control-of-flexible-joint-robotic-arm/blob/main/Modeling%20and%20Nonlinear%20Control%20of%20a%20Single-link%20Flexible%20Joint.pdf).
+В данной работе представлен вариант решения задачи, предложенной в [статье](https://github.com/LeoKhariton/nonlinear-control-of-flexible-joint-robotic-arm/blob/main/Modeling%20and%20Nonlinear%20Control%20of%20a%20Single-link%20Flexible%20Joint.pdf "Modeling and Nonlinear Control of a Single-link Flexible Joint Manupulator").
 
-Математическая модель однозвенного гибкого манипулятора с шарниром в вертикальной плоскости, взятая из [статьи](https://github.com/LeoKhariton/nonlinear-control-of-flexible-joint-robotic-arm/blob/main/Modeling%20and%20Nonlinear%20Control%20of%20a%20Single-link%20Flexible%20Joint.pdf), имеет вид:
+Математическая модель однозвенного гибкого манипулятора с шарниром в вертикальной плоскости имеет вид:
 
 ```math
 \begin{cases} 
@@ -40,7 +40,7 @@
 | Инерция нагрузки | $J_l$ | 0,0059 [Кг·м²] |
 | Сопротивление двиг. | $R_m$ | 2,6 [Ом] |
 
-В аффинной форме
+### В аффинной форме
 
 ```math
 \begin{cases} 
@@ -65,8 +65,9 @@ x_4 \\
 0 \\
 \dfrac{K_m K_g}{R_m J_h} \\
 - \dfrac{K_m K_g}{R_m J_h}
-\end{bmatrix}
-u \\
+\end{bmatrix} u
+```
+```math
 y = x_1+x_2
 ```
 
@@ -88,10 +89,63 @@ x_1 \\ x_2 \\ x_3 \\ x_4
 
 ### Поиск линеаризующего управления
 
-проведем в системе символьных вычислений `Mathematica`
+проведем в системе символьных вычислений `Mathematica`, реализовав алгоритм, описанный в [книге](https://github.com/LeoKhariton/nonlinear-control-of-flexible-joint-robotic-arm/blob/main/Б.Т.%20Поляк%20М.В.%20Хлебников%20Л.Б.%20Рапопорт.%20Математическая%20теория%20автоматического%20управления.pdf "Математическая теория автоматического управления") на стр. 359-361:
 
-Согласно алгоритму, описанному в [книге](https://github.com/LeoKhariton/nonlinear-control-of-flexible-joint-robotic-arm/blob/main/Б.Т.%20Поляк%20М.В.%20Хлебников%20Л.Б.%20Рапопорт.%20Математическая%20теория%20автоматического%20управления.pdf) (стр. 359-361), найдено линеаризующее управление:
+```math
+u=\dfrac{\left(g h J_h m R_m \left(\sin (x_1+x_2) \left(-g h m \cos (x_1+x_2)+J_l (x_3+x_4)^2+K_s\right)+K_s x_2 \cos (x_1+x_2)\right)+K_s \left(J_l K_g^2 K_m^2 x_3-K_s R_m x_2 (J_h+J_l)\right)\right)-J_h J_l R_m \left(k_3 (g h m (x_3+x_4) \cos (x_1+x_2)-K_s x_4)+k_2 (g h m \sin (x_1+x_2)-K_s x_2)+y J_l k_0+J_l k_1 (x_3+x_4)\right)}{J_l K_g K_m K_s}
+```
 
-$u=\dfrac{\left(g h J_h m R_m \left(\sin (x_1+x_2) \left(-g h m \cos (x_1+x_2)+J_l (x_3+x_4)^2+K_s\right)+K_s x_2 \cos (x_1+x_2)\right)+K_s \left(J_l K_g^2 K_m^2 x_3-K_s R_m x_2 (J_h+J_l)\right)\right)-J_h J_l R_m \left(k_3 (g h m (x_3+x_4) \cos (x_1+x_2)-K_s x_4)+k_2 (g h m \sin (x_1+x_2)-K_s x_2)+y J_l k_0+J_l k_1 (x_3+x_4)\right)}{J_l K_g K_m K_s}$
+### Моделирование исходной модели
 
-2. После линеаризации системы можем применить методы линейной теории для поиска коэффициентов $k_0,k_1,k_2,k_3$.
+с коэффициентами $k_0=k_1=k_2=k_3=1$ и начальными условиями $\theta_0=\dfrac{\pi}{4}, \alpha_0=\dfrac{\pi}{4}, \dot\theta_0=0, \dot\alpha_0=0$, даёт следующие результаты:
+
+Как видно из графиков, для корректной стабилизации звена, необходимо правильно подобрать коэффициенты $k_0,k_1,k_2,k_3$.
+
+### Применим методы линейной теории
+
+для поиска коэффициентов $k_0,k_1,k_2,k_3$. Вычислим линейный регулятор с обратной связью по внешнему контуру, который регулирует положение наконечника до постоянного заданного значения.
+
+Так как относительная степень модели $r=4$, то
+
+```math
+\bf{A}=\begin{bmatrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0
+\end{bmatrix},\quad\bf{B}=\begin{bmatrix}
+0 \\ 0 \\ 0 \\ 1
+\end{bmatrix}
+```
+
+При весовых матрицах
+
+```math
+\bf{Q}=\begin{bmatrix}
+100 & 0 & 0 & 0 \\
+0 & 100 & 0 & 0 \\
+0 & 0 & 0{,}1 & 0 \\
+0 & 0 & 0 & 0{,}1
+\end{bmatrix},\quad\bf{R}=1
+```
+
+оптимальные значения будут:
+
+
+Результаты моделирования:
+
+При весовых матрицах
+
+```math
+\bf{Q}=\begin{bmatrix}
+10^{6} & 0 & 0 & 0 \\
+0 & 10^{6} & 0 & 0 \\
+0 & 0 & 10^{-3} & 0 \\
+0 & 0 & 0 & 10^{-3}
+\end{bmatrix},\quad\bf{R}=10^{-4}
+```
+
+оптимальные значения будут:
+
+
+Результаты моделирования:
