@@ -72,6 +72,16 @@ y = x_1+x_2
 \end{cases}
 ```
 
+```math
+\dot{x} = 
+\begin{bmatrix}
+x_3 \\
+x_4 \\
+\dfrac{K_s}{J_h} x_2 - \dfrac{K_m^2 K_g^2}{R_m J_h} x_3 \\
+-\left( \dfrac{K_s}{J_h} + \dfrac{K_s}{J_l} \right) x_2 + \dfrac{mgh}{J_l} \sin(x_1 + x_2) + \dfrac{K_m^2 K_g^2}{R_m J_h} x_3
+\end{bmatrix}
+```
+
 где
 
 ```math
