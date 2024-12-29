@@ -53,19 +53,19 @@ y=h(x)
 
 ```math
 \dot{x} = 
-\begin{bmatrix}
-x_3 \\
-x_4 \\
-\dfrac{K_s}{J_h} x_2 - \dfrac{K_m^2 K_g^2}{R_m J_h} x_3 \\
--\left( \dfrac{K_s}{J_h} + \dfrac{K_s}{J_l} \right) x_2 + \dfrac{mgh}{J_l} \sin(x_1 + x_2) + \dfrac{K_m^2 K_g^2}{R_m J_h} x_3
+\begin{bmatrix} 
+x_3 \\ 
+x_4 \\ 
+\dfrac{K_s}{J_h} x_2 - \dfrac{K_m^2 K_g^2}{R_m J_h} x_3 \\ 
+-\left( \dfrac{K_s}{J_h} + \dfrac{K_s}{J_l} \right) x_2 + \dfrac{mgh}{J_l} \sin(x_1 + x_2) + \dfrac{K_m^2 K_g^2}{R_m J_h} x_3 
 \end{bmatrix}
 + 
-\begin{bmatrix}
-0 \\
-0 \\
-\dfrac{K_m K_g}{R_m J_h} \\
-- \dfrac{K_m K_g}{R_m J_h}
-\end{bmatrix} u
+\begin{bmatrix} 
+0 \\ 
+0 \\ 
+\dfrac{K_m K_g}{R_m J_h} \\ 
+- \dfrac{K_m K_g}{R_m J_h} 
+\end{bmatrix} \; u
 ```
 ```math
 y = x_1+x_2
@@ -75,15 +75,13 @@ y = x_1+x_2
 
 ```math
 x = 
-\begin{bmatrix}
-x_1 \\ x_2 \\ x_3 \\ x_4
-\end{bmatrix}
+\begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{bmatrix}
 =
-\begin{bmatrix}
-\theta \\
-\alpha \\
-\dot \theta \\
-\dot \alpha
+\begin{bmatrix} 
+\theta \\ 
+\alpha \\ 
+\dot \theta \\ 
+\dot \alpha 
 \end{bmatrix}
 ```
 
@@ -97,9 +95,9 @@ u=\dfrac{\left(g h J_h m R_m \left(\sin (x_1+x_2) \left(-g h m \cos (x_1+x_2)+J_
 
 ### Моделирование исходной модели
 
-с коэффициентами $k_0=k_1=k_2=k_3=1$ и начальными условиями $\theta_0=\dfrac{\pi}{4}, \alpha_0=\dfrac{\pi}{4}, \dot\theta_0=0, \dot\alpha_0=0$, даёт следующие результаты:
+с коэффициентами $k_0=k_1=k_2=k_3=1$ и начальными условиями $\theta_0=\pi/4,\;\alpha_0=\pi/4,\; \dot\theta_0=0,\; \dot\alpha_0=0$, даёт следующие результаты:
 
-Как видно из графиков, для корректной стабилизации звена, необходимо правильно подобрать коэффициенты $k_0,k_1,k_2,k_3$.
+Как видно из графиков, для корректной стабилизации звена, необходимо правильно подобрать коэффициенты $k_0,\;k_1,\;k_2,\;k_3$.
 
 ### Применим методы линейной теории
 
@@ -108,13 +106,13 @@ u=\dfrac{\left(g h J_h m R_m \left(\sin (x_1+x_2) \left(-g h m \cos (x_1+x_2)+J_
 Так как относительная степень модели $r=4$, то
 
 ```math
-\bf{A}=\begin{bmatrix}
-0 & 1 & 0 & 0 \\
-0 & 0 & 1 & 0 \\
-0 & 0 & 0 & 1 \\
-0 & 0 & 0 & 0
-\end{bmatrix},\quad\bf{B}=\begin{bmatrix}
-0 \\ 0 \\ 0 \\ 1
+\bf{A}=\begin{bmatrix} 
+0 & 1 & 0 & 0 \\ 
+0 & 0 & 1 & 0 \\ 
+0 & 0 & 0 & 1 \\ 
+0 & 0 & 0 & 0 
+\end{bmatrix},\quad\bf{B}=\begin{bmatrix} 
+0 \\ 0 \\ 0 \\ 1 
 \end{bmatrix}
 ```
 
