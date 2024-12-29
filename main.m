@@ -16,8 +16,6 @@ Rm = 2.6;
 
 global k0 k1 k2 k3
 
-format long g
-
 A = [0 1 0 0;
      0 0 1 0;
      0 0 0 1;
@@ -25,7 +23,7 @@ A = [0 1 0 0;
  
 B = [0; 0; 0; 1];
 
-Q = diag([1e6 1e5 1e-2 1e-2]);
+Q = diag([1e6 1e5 1e-3 1e-3]);
 
 R = 1e-3;
 
@@ -36,16 +34,13 @@ k1 = K(2);
 k2 = K(3);
 k3 = K(4);
 
-disp(K);
-disp(eig(A-B*K));
-disp(A-B*K);
-
-[t, y] = ode45(@fcn, [0 2], [12 -8 -1 1]);
+[t, y] = ode45(@fcn, [0 3], [pi/4 -pi/6 0 0]);
 
 figure('color','white');
 for i = 1 : 4
     subplot(2, 2, i);
     plot(t, y(:,i));
+    title('x_' + string(i));
     grid on;
 end
 
