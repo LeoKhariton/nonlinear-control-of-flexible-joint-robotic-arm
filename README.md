@@ -133,7 +133,7 @@ u=\dfrac{\left(g h J_h m R_m \left(\sin (x_1+x_2) \left(-g h m \cos (x_1+x_2)+J_
 \end{bmatrix},\quad\bf{R}=0{,}1
 ```
 
-Результаты моделирования:
+### Результаты моделирования:
 
 ![alt text](image-3.png)
 
